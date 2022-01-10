@@ -1,7 +1,5 @@
 import React from "react";
-import DanieleCarta from "_shared/assets/img/daniele-carta.jpg";
 import { Absolute } from "_shared/components";
-import { About } from "homepage/components/About";
 import { PageBase } from "_shared/layouts";
 
 const Courses: React.FC = () => {
