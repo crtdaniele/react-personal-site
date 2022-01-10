@@ -3,7 +3,7 @@ type Props = {
 };
 
 const Title: React.FC<Props> = ({ children, Type }) => {
-  return <Type className='dark:text-white'>{children}</Type>;
+  return <Type>{children}</Type>;
 };
 
 export { Title };

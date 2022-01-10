@@ -1,13 +1,12 @@
 import React from "react";
 import DanieleCarta from "_shared/assets/img/daniele-carta.jpg";
-import { Absolute, NavBar, ToggleTheme } from "_shared/components";
+import { Absolute } from "_shared/components";
 import { About } from "homepage/components/About";
+import { PageBase } from "_shared/layouts";
 
 const HomePage: React.FC = () => {
   return (
-    <>
-      <ToggleTheme />
-      <NavBar />
+    <PageBase>
       <Absolute
         customCss={{ transform: "translateY(-50%)" }}
         top='top-1/2'
@@ -30,7 +29,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </Absolute>
-    </>
+    </PageBase>
   );
 };
 

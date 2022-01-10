@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BsFillLightbulbFill, BsFillLightbulbOffFill } from "react-icons/bs";
+import { BsLightningFill, BsLightning } from "react-icons/bs";
 import { useTheme } from "_shared/hooks";
 import { Absolute } from "../../atoms/Absolute";
 
@@ -15,9 +15,9 @@ const ToggleTheme = () => {
     <div className='cursor-pointer' onClick={setTheme}>
       <Absolute bottom='bottom-3' right='right-3'>
         {currentTheme !== "dark" ? (
-          <BsFillLightbulbFill size={25} />
+          <BsLightningFill size={25} />
         ) : (
-          <BsFillLightbulbOffFill size={25} color='white' />
+          <BsLightning size={25} color='white' />
         )}
       </Absolute>
     </div>

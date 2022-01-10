@@ -2,23 +2,42 @@ body {
   font-family: Roboto, sans-serif !important;
 }
 
+#root {
+  max-width: 1600px;
+  margin: 0 1.4rem;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   h1 {
+    @apply dark:text-white;
     @apply text-5xl;
     @apply font-medium;
   }
 
   a {
-    @apply text-red;
+    @apply dark:text-red;
+    @apply text-link;
+    @apply cursor-pointer;
+    @apply opacity-80;
+  }
+
+  a:hover {
+    @apply opacity-100;
+    @apply underline;
+    @apply transition;
+    @apply duration-300;
   }
 }
 
-@tailwind components {
-  .navbar {
-    float: left;
+@layer components {
+  .logo {
+    @apply dark:text-white;
+    @apply text-2xl;
+    @apply font-medium;
+    @apply ml-2;
   }
 }

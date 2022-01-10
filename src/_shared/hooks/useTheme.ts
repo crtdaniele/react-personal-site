@@ -1,31 +1,33 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme, themeSelector } from "_shared/store/core";
 
 const useTheme = () => {
-  const [currentTheme, setCurrentTheme] = useState<string | null>("light");
+  const dispatch = useDispatch();
+  const currentTheme = useSelector(themeSelector);
 
-  const setTheme = () => {
+  const changeTheme = () => {
     if (!!localStorage.theme) {
       localStorage.removeItem("theme");
       document.querySelector("body")?.classList.remove("bg-dark");
       document.documentElement.classList.remove("dark");
-      setCurrentTheme("light");
+      dispatch(setTheme("light"));
     } else {
       localStorage.theme = "dark";
       document.querySelector("body")?.classList.add("bg-dark");
       document.documentElement.classList.add("dark");
-      setCurrentTheme("dark");
+      dispatch(setTheme("dark"));
     }
   };
 
   const checkTheme = () => {
     if (!!localStorage.theme) {
-      setCurrentTheme("dark");
+      dispatch(setTheme("dark"));
       document.querySelector("body")?.classList.add("bg-dark");
       document.documentElement.classList.add("dark");
     }
   };
 
-  return { setTheme, checkTheme, currentTheme };
+  return { setTheme: changeTheme, checkTheme, currentTheme };
 };
 
 export { useTheme };
