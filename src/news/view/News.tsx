@@ -3,11 +3,9 @@ import { PageBase } from "_shared/layouts";
 import { Text } from "_shared/components";
 
 const News = () => {
-  const {
-    data: posts,
-    error,
-    isLoading,
-  } = useGetAllNewsQuery("", { refetchOnMountOrArgChange: true });
+  const { data: posts, isLoading } = useGetAllNewsQuery("", {
+    refetchOnMountOrArgChange: true,
+  });
 
   return (
     <PageBase>
