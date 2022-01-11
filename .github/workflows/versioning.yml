@@ -1,11 +1,23 @@
-name: PR to Versioning
+name: Versioning
 
 on: workflow_dispatch
 
 jobs:
-  create-pull-request:
+  build:
+  
     name: PullRequestAction
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+    
+    - uses: actions/checkout@v2
+    - name: Configure committer
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        
+    - name: Bump version
+      uses: qzb/standard-version@v1
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
