@@ -1,8 +1,5 @@
 name: PR to Versioning
-on: 
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 jobs:
   create-pull-request:
     name: PullRequestAction
