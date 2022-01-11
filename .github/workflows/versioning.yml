@@ -22,14 +22,14 @@ jobs:
         cache: 'npm'
         
     - run: npm install
+        
+    - run: npm run version
     
     - uses: actions/checkout@v2
     - name: Configure committer
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        
-    - run: npm run version
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
