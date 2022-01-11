@@ -1,19 +1,9 @@
 name: PR to Versioning
-on: [release]
+on: [master]
 jobs:
-  pull-request-on-release:
+  create-pull-request:
     name: PullRequestAction
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Derive from branch name
-        run: |
-            # do custom parsing of your code / date to derive a branch from
-            PR_BRANCH_FROM=release-v$(cat VERSION)
-            export "PULL_REQUEST_FROM_BRANCH=${PR_BRANCH_FROM}" >> $GITHUB_ENV
-      - name: pull-request-action
-        uses: vsoch/pull-request-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PULL_REQUEST_BRANCH: "master"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
