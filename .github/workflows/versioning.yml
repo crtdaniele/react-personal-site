@@ -20,6 +20,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        
+    - run: npm install
     
     - uses: actions/checkout@v2
     - name: Configure committer
