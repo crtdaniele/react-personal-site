@@ -1,5 +1,8 @@
 name: PR to Versioning
-on: [master]
+on: 
+  push:
+    branches:
+      - master
 jobs:
   create-pull-request:
     name: PullRequestAction
