@@ -4,11 +4,22 @@ on: workflow_dispatch
 
 jobs:
   build:
-  
-    name: PullRequestAction
+
     runs-on: ubuntu-latest
-    
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
     
     - uses: actions/checkout@v2
     - name: Configure committer
@@ -16,8 +27,7 @@ jobs:
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         
-    - name: Bump version
-      uses: qzb/standard-version@v1
+    - run: npm run version
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
