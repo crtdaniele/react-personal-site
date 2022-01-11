@@ -25,7 +25,6 @@ jobs:
         
     - run: npm run version
     
-    - uses: actions/checkout@v2
     - name: Configure committer
       run: |
         git config user.name "GitHub Actions Bot"
