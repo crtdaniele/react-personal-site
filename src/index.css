@@ -4,7 +4,8 @@ body {
 
 #root {
   max-width: 1600px;
-  margin: 0 1.4rem;
+  margin: 0 auto;
+  padding: 0 1.4rem;
 }
 
 @tailwind base;
@@ -16,6 +17,14 @@ body {
     @apply dark:text-white;
     @apply text-5xl;
     @apply font-medium;
+  }
+
+  h3 {
+    @apply dark:text-white;
+    @apply text-dark !important;
+    @apply text-2xl;
+    @apply mb-0;
+    @apply font-bold;
   }
 
   a {
@@ -31,6 +40,10 @@ body {
     @apply transition;
     @apply duration-300;
   }
+
+  svg {
+    display: initial;
+  }
 }
 
 @layer components {
@@ -39,5 +52,23 @@ body {
     @apply text-2xl;
     @apply font-medium;
     @apply ml-2;
+  }
+
+  .card-link {
+    @apply no-underline !important;
+  }
+  .card-link:hover img {
+    @apply opacity-80;
+    @apply transition-opacity;
+    @apply duration-300;
+  }
+  .card-link:hover h3 {
+    @apply text-gray !important;
+  }
+}
+
+@layer utilities {
+  .link-no-underline {
+    @apply no-underline !important;
   }
 }

@@ -1,28 +1,12 @@
-import { useGetAllNewsQuery } from "news/api/newsApi";
 import { PageBase } from "_shared/layouts";
-import { Text } from "_shared/components";
+import { NewsItems } from "news/components/NewsItems";
+import { Title } from "_shared/components";
 
 const News = () => {
-  const { data: posts, isLoading } = useGetAllNewsQuery("", {
-    refetchOnMountOrArgChange: true,
-  });
-
   return (
     <PageBase>
-      <div className='flex flex-wrap'>
-        {!isLoading &&
-          posts &&
-          posts.map((post) => {
-            return (
-              <div className='mb-10 md:flex-2 lg:flex-3'>
-                <h5>{post.title}</h5>
-                <Text>
-                  <>{post.body}</>
-                </Text>
-              </div>
-            );
-          })}
-      </div>
+      <Title Type='h1'>News</Title>
+      <NewsItems />
     </PageBase>
   );
 };
