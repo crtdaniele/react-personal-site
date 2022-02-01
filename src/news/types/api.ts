@@ -1,6 +1,9 @@
 export type NewsResponse = {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}[];
+  items: {
+    title: string;
+    description: string;
+    link: string;
+    pubDate: string;
+    thumbnail: string;
+  }[];
+};

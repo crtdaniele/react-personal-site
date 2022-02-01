@@ -21,7 +21,7 @@ body {
 
   h3 {
     @apply dark:text-white;
-    @apply text-dark !important;
+    @apply text-dark;
     @apply text-2xl;
     @apply mb-0;
     @apply font-bold;
@@ -47,13 +47,6 @@ body {
 }
 
 @layer components {
-  .logo {
-    @apply dark:text-white;
-    @apply text-2xl;
-    @apply font-medium;
-    @apply ml-2;
-  }
-
   .card-link {
     @apply no-underline !important;
   }
@@ -61,9 +54,6 @@ body {
     @apply opacity-80;
     @apply transition-opacity;
     @apply duration-300;
-  }
-  .card-link:hover h3 {
-    @apply text-gray !important;
   }
 }
 

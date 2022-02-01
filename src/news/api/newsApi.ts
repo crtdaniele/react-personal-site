@@ -4,11 +4,11 @@ import { NewsResponse } from "news/types";
 export const newsApi = createApi({
   reducerPath: "news",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com/",
+    baseUrl: "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/",
   }),
   endpoints: (builder) => ({
     getAllNews: builder.query<NewsResponse, string>({
-      query: (posts) => "posts",
+      query: (posts) => "@crtdaniele",
     }),
   }),
 });

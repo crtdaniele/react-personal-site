@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "_shared/routing";
+import { ToggleTheme } from "../ToggleTheme";
 import { Logo } from "./Logo";
 
 const NavBar: React.FC = () => {
@@ -9,20 +10,19 @@ const NavBar: React.FC = () => {
   const items = useMemo(() => {
     return [
       {
-        label: "Home",
-        route: RoutePath.Home,
-      },
-      {
-        label: "About",
-        route: RoutePath.About,
-      },
-      {
         label: "News",
         route: RoutePath.News,
       },
       {
         label: "Corsi",
         route: RoutePath.Courses,
+      },
+      {
+        label: "About",
+        route: RoutePath.About,
+      },
+      {
+        component: ToggleTheme,
       },
     ];
   }, []);
@@ -49,9 +49,9 @@ const NavBar: React.FC = () => {
             stroke='currentColor'
           >
             <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2' 
               d='M4 6h16M4 12h16m-7 6h7'
             />
           </svg>
@@ -59,16 +59,18 @@ const NavBar: React.FC = () => {
         <ul className='hidden md:inline-flex'>
           {items.map((item, index) => (
             <li
-              key={item.route}
+              key={item.route ? item.route : index}
               className={`float-left ${index !== 0 ? "ml-8" : ""}`}
             >
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a
-                className='dark:text-white font-medium text-gray'
-                onClick={() => goTo(item.route)}
-              >
-                {item.label}
-              </a>
+              {item.component ? <item.component/> : (
+                // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                <a
+                  className='dark:text-white font-medium text-gray hover:no-underline'
+                  onClick={() => goTo(item.route)}
+                >
+                  {item.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
